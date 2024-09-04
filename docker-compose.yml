@@ -1,0 +1,19 @@
+# version: 3
+
+services:
+
+  angular:
+    build: .
+    volumes:
+      - ./:/app
+    container_name: nodejs-app
+    command: ng build --watch --configuration development
+
+  web-server:
+    image: nginx:stable-alpine3.20
+    ports:
+      - 4200:80
+    volumes:
+      - ./dist/browser:/usr/share/nginx/html:ro
+
+    
