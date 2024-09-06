@@ -1,0 +1,8 @@
+.vscode
+.idea
+.git
+.cache
+.angular
+dist
+node_modules
+README.md

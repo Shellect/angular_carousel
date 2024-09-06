@@ -5,15 +5,19 @@ services:
   angular:
     build: .
     volumes:
-      - ./:/app
+      - ./src:/app/src
+      - ./public:/app/public
+      - dist:/app/dist/browser
     container_name: nodejs-app
-    command: ng build --watch --configuration development
+    command: npm run watch
 
   web-server:
     image: nginx:stable-alpine3.20
     ports:
       - 4200:80
     volumes:
-      - ./dist/browser:/usr/share/nginx/html:ro
+      - dist:/usr/share/nginx/html:ro
 
     
+volumes:
+  dist:
